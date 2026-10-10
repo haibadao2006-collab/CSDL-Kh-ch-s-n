@@ -145,5 +145,5 @@ INSERT INTO khach_hang (id_khach_hang, ten_khach_hang, cccd, sdt) VALUES
 ('KH06', 'Vũ Thu Phương', '006095678901', '0956789012'),
 ('KH07', 'Đặng Kim Giang', '007096789012', '0967890123'),
 ('KH08', 'Bùi Đức Hùng', '008097890123', '0978901234'),
-('KH09', 'Khách vãng lai 1', NULL, NULL),
-('KH10', 'Khách vãng lai 2', NULL, NULL);
+('KH09', 'Lưu Trần Tiến', NULL, NULL),
+('KH10', 'Nguyễn Thảo Anh', NULL, NULL);
