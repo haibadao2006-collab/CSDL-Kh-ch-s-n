@@ -90,10 +90,10 @@ CREATE TABLE hoa_don_dich_vu (
 -- Bảng chi tiết hóa đơn dịch vụ
 CREATE TABLE chi_tiet_hoa_don_dich_vu (
     id_hoa_don VARCHAR(10),
-    ma_dich_vu VARCHAR(10),
+    id_dich_vu VARCHAR(10),
     so_luong INT,
     don_gia INT,
-    PRIMARY KEY (id_hoa_don, ma_dich_vu),
+    PRIMARY KEY (id_hoa_don, id_dich_vu),
     FOREIGN KEY (id_hoa_don) REFERENCES hoa_don_dich_vu(id_hoa_don) ON DELETE CASCADE,
     FOREIGN KEY (id_dich_vu) REFERENCES dich_vu(id_dich_vu)
 );
@@ -108,3 +108,42 @@ CREATE TABLE hoa_don_thanh_toan (
     FOREIGN KEY (id_phieu_dat_phong) REFERENCES phieu_dat_phong(id_phieu_dat_phong),
     FOREIGN KEY (id_nhan_vien) REFERENCES nhan_vien(id_nhan_vien)
 );
+-- Thêm dữ liệu cho 3 Chi nhánh
+INSERT INTO chi_nhanh (id_chi_nhanh, ten_chi_nhanh, dia_chi) VALUES
+('CN01', 'Chi nhánh Hà Nội', '123 Hà Đông, Hà Nội'),
+('CN02', 'Chi nhánh Đà Nẵng', '456 Hoàn Kiếm, Hà Nội'),
+('CN03', 'Chi nhánh Hồ Chí Minh', '789 Cầu Giấy, Hà Nội');
+
+-- Thêm dữ liệu cho 10 Phòng (phân bổ cho các chi nhánh)
+INSERT INTO phong (so_phong, id_chi_nhanh, loai_phong, tinh_trang_phong, gia_tien) VALUES
+('P101', 'CN01', 'Thường', 'Trống', 500000),
+('P102', 'CN01', 'Thường', 'Đang thuê', 500000),
+('V101', 'CN01', 'VIP', 'Trống', 2000000),
+('P201', 'CN02', 'Thường', 'Bảo trì', 500000),
+('P202', 'CN02', 'Thường', 'Trống', 500000),
+('V201', 'CN02', 'VIP', 'Đang thuê', 2000000),
+('P301', 'CN03', 'Thường', 'Trống', 500000),
+('P302', 'CN03', 'Thường', 'Đang thuê', 500000),
+('V301', 'CN03', 'VIP', 'Trống', 2000000),
+('V302', 'CN03', 'VIP', 'Trống', 2000000);
+
+-- Thêm dữ liệu cho 5 Dịch vụ
+INSERT INTO dich_vu (id_dich_vu, ten_dich_vu, gia_tien) VALUES
+('DV01', 'Giặt ủi', 50000),
+('DV02', 'Ăn sáng Buffet', 150000),
+('DV03', 'Thuê xe máy', 150000),
+('DV04', 'Spa & Massage', 500000),
+('DV05', 'Đưa đón sân bay', 300000);
+
+-- Thêm dữ liệu cho 10 Khách hàng (Trong đó có cả khách vãng lai)
+INSERT INTO khach_hang (id_khach_hang, ten_khach_hang, cccd, sdt) VALUES
+('KH01', 'Nguyễn Văn An', '001090123456', '0901234567'),
+('KH02', 'Trần Thị Bình', '002091234567', '0912345678'),
+('KH03', 'Lê Hoàng Cường', '003092345678', '0923456789'),
+('KH04', 'Phạm Mỹ Dung', '004093456789', '0934567890'),
+('KH05', 'Hoàng Văn Em', '005094567890', '0945678901'),
+('KH06', 'Vũ Thu Phương', '006095678901', '0956789012'),
+('KH07', 'Đặng Kim Giang', '007096789012', '0967890123'),
+('KH08', 'Bùi Đức Hùng', '008097890123', '0978901234'),
+('KH09', 'Khách vãng lai 1', NULL, NULL),
+('KH10', 'Khách vãng lai 2', NULL, NULL);
